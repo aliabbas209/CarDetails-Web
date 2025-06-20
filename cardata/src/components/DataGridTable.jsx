@@ -26,12 +26,6 @@ import {
 import { ModuleRegistry, AllCommunityModule } from "ag-grid-community";
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-ActionsCell.propTypes = {
-  id: PropTypes.string.isRequired,
-  onView: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
-
 const conditionOptions = [
   { value: "contains", label: "Contains" },
   { value: "equals", label: "Equals" },
@@ -61,6 +55,12 @@ const ActionsCell = ({ id, onView, onDelete }) => (
     </Button>
   </div>
 );
+
+ActionsCell.propTypes = {
+  id: PropTypes.string.isRequired,
+  onView: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 const DataGridTable = () => {
   const [rowData, setRowData] = useState([]);

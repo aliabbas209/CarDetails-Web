@@ -97,4 +97,17 @@ app.get("/data/:id", async (req, res) => {
   }
 });
 
+app.delete("/data/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await DataModel.findByIdAndDelete(id);
+    if (!doc) {
+      return res.status(404).json({ error: "Document not found" });
+    }
+    res.json(doc);
+  } catch (err) {
+    res.status(400).json({ error: "Invalid ID format" });
+  }
+});
+
 app.listen(4000, () => console.log("Backend running on port 4000"));
